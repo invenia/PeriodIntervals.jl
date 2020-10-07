@@ -248,9 +248,12 @@ end
 
 ##### CONVERSION #####
 
-# Allows an interval to be converted to a scalar when the set contained by the interval only
-# contains a single element.
-function Base.convert(::Type{T}, interval::Interval{T}) where T
+"""
+    scalar(::Interval{T}) -> T
+
+Converts a closed interval set with a single element into a scalar.
+"""
+function scalar(interval::Interval)
     if first(interval) == last(interval) && isclosed(interval)
         return first(interval)
     else

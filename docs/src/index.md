@@ -225,6 +225,7 @@ Open
 Unbounded
 first
 last
+scalar
 span
 isclosed
 isopen
