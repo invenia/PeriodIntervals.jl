@@ -114,13 +114,13 @@ using Intervals: Bounded, Ending, Beginning, canonicalize, isunbounded
 
     @testset "conversion" begin
         interval = AnchoredInterval{Hour(0)}(dt)
-        @test scalar(interval) == dt
+        @test only(interval) == dt
 
         he = HourEnding(dt)
         hb = HourBeginning(dt)
 
-        @test_throws DomainError scalar(he)
-        @test_throws DomainError scalar(hb)
+        @test_throws DomainError only(he)
+        @test_throws DomainError only(hb)
 
         @test convert(Interval, he) == Interval{Open, Closed}(dt - Hour(1), dt)
         @test convert(Interval, hb) == Interval{Closed, Open}(dt, dt + Hour(1))

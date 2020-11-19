@@ -225,7 +225,7 @@ Open
 Unbounded
 first
 last
-scalar
+only
 span
 isclosed
 isopen

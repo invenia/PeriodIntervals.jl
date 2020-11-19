@@ -248,12 +248,7 @@ end
 
 ##### CONVERSION #####
 
-"""
-    scalar(::Interval{T}) -> T
-
-Converts a closed interval set with a single element into a scalar.
-"""
-function scalar(interval::Interval)
+function Base.only(interval::Interval)
     if first(interval) == last(interval) && isclosed(interval)
         return first(interval)
     else

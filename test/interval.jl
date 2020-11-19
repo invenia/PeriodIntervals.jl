@@ -98,19 +98,19 @@
     end
 
     @testset "conversion" begin
-        @test_throws DomainError scalar(Interval{Open, Open}(10, 10))
-        @test_throws DomainError scalar(Interval{Open, Closed}(10, 10))
-        @test_throws DomainError scalar(Interval{Closed, Open}(10, 10))
-        @test scalar(Interval{Closed, Closed}(10, 10)) == 10
-        @test_throws DomainError scalar(Interval{Closed, Closed}(10, 11))
+        @test_throws DomainError only(Interval{Open, Open}(10, 10))
+        @test_throws DomainError only(Interval{Open, Closed}(10, 10))
+        @test_throws DomainError only(Interval{Closed, Open}(10, 10))
+        @test only(Interval{Closed, Closed}(10, 10)) == 10
+        @test_throws DomainError only(Interval{Closed, Closed}(10, 11))
 
         for T in (Date, DateTime)
             dt = T(2013, 2, 13)
-            @test_throws DomainError scalar(Interval{Open, Open}(dt, dt))
-            @test_throws DomainError scalar(Interval{Open, Closed}(dt, dt))
-            @test_throws DomainError scalar(Interval{Closed, Open}(dt, dt))
-            @test scalar(Interval{Closed, Closed}(dt, dt)) == dt
-            @test_throws DomainError scalar(Interval{Closed, Closed}(dt, dt + Day(1)))
+            @test_throws DomainError only(Interval{Open, Open}(dt, dt))
+            @test_throws DomainError only(Interval{Open, Closed}(dt, dt))
+            @test_throws DomainError only(Interval{Closed, Open}(dt, dt))
+            @test only(Interval{Closed, Closed}(dt, dt)) == dt
+            @test_throws DomainError only(Interval{Closed, Closed}(dt, dt + Day(1)))
         end
     end
 

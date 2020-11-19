@@ -176,12 +176,7 @@ span(interval::AnchoredInterval{P}) where P = abs(P)
 
 ##### CONVERSION #####
 
-"""
-    scalar(::AnchoredInterval{P, T}) -> T
-
-Converts a closed interval set with a single element into a scalar.
-"""
-function scalar(interval::AnchoredInterval{P}) where {P}
+function Base.only(interval::AnchoredInterval{P}) where {P}
     if isclosed(interval) && (sign(P) == 0 || first(interval) == last(interval))
         return first(interval)
     else
