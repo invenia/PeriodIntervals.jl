@@ -248,9 +248,7 @@ end
 
 ##### CONVERSION #####
 
-# Allows an interval to be converted to a scalar when the set contained by the interval only
-# contains a single element.
-function Base.convert(::Type{T}, interval::Interval{T}) where T
+function Base.only(interval::Interval)
     if first(interval) == last(interval) && isclosed(interval)
         return first(interval)
     else
